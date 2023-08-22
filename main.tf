@@ -4,7 +4,7 @@ variable "environments" {
 
 }
 
-variable "resource.group_name" {
+variable "resource_group_name" {
   description = "Name of the Resource Group"
   type        = string
 
@@ -17,9 +17,9 @@ variable "azurerm_resource_group" "main" {
 }
 
 module "Key_vaults" {
-    source          = ".keyvault_module"
+    source          = "./key_vault_module"
 
     environments    = var.environments
     resource_group  = azurerm_resource_group.main.name
-    subscription_id = "" # Replace with own subscription ID
+    subscription_id = "**********" # Replace with own subscription ID
 }
