@@ -33,16 +33,16 @@ resource "azurerm_private_dns_zone" "private_dns_zones" {
 }
 
 resource "azurerm_private_endpoint" "private_endpoints" {
-    count = 
-    name = 
-    location = 
-    resource_group_name = 
+    count = length(var.environments)
+    name = format("%s-keyvault-endpoint", var.environments[count.index])
+    location = resource_group.main.location
+    resource_group_name = resource_group.main.name
     subnet_id = 
     private_service_connection {
       name = 
-      is_manual_connection = 
+      is_manual_connection = false
       private_connection_resource_id = 
-      subresource_names = 
+      subresource_names = ["vault"]
     }
 }
 
