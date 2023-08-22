@@ -24,3 +24,15 @@ resource "azurerm_key_vault" "keyvaults" {
     location            = azurerm_resource_group.main.location
     resource_group_name = var.resource_group
 }
+
+resource "azure_private_dns_zone" "private_dns_zones" {
+
+}
+
+resource "azure_private_endpoint" "private_endpoints" {
+
+}
+
+output "keyvault_ids" {
+    value = azurerm_key_vault.keyvaults[*].id
+}
