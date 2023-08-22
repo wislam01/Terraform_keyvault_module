@@ -1,25 +1,15 @@
-variable "environments" {
-  description = "List of the environments for where to create the Key Vault"
-  type        = list(string)
-
+provider "azurerm" {
+    features {}
 }
 
-variable "resource_group_name" {
-  description = "Name of the Resource Group"
-  type        = string
-
-}
-
-variable "azurerm_resource_group" "main" {
-  name     = "var.resource_group_name"
-  Location =  "East US"
-
-}
-
-module "Key_vaults" {
+module "key_vaults" {
     source          = "./key_vault_module"
 
-    environments    = var.environments
-    resource_group  = azurerm_resource_group.main.name
+    environments    = ["prod", "nonprod", "dev", "test", "qa", "perf"]
+    resource_group  = "keyvaults_rg" # Replace with desired resource group name
     subscription_id = "**********" # Replace with own subscription ID
+}
+
+output "retrieved_keyvault_ids" {
+    value = module.key_vaults.keyvault_ids
 }
