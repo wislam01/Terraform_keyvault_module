@@ -1,6 +1,6 @@
 variable "environments"{
     description = "List of envonments needed for the Key Vault"
-    type = list(string)
+    type        = list(string)
 }
 
 variable "resource_group_name" {
@@ -10,5 +10,5 @@ variable "resource_group_name" {
 
 variable "subscription_id" {
     description = "ID of the Azure subscription"
-    type = string
+    type        = string
 }

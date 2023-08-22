@@ -20,16 +20,19 @@ resource "azurerm_resource_group" "main" {
 
 resource "azurerm_key_vault" "keyvaults" {
     count               = length(var.environments)
-    name                = 
+    name                = format("%s-keyvault", var.environments[count.index])
     location            = azurerm_resource_group.main.location
-    resource_group_name = var.resource_group
+    resource_group_name = azurerm_resource_group.main.name
 }
 
-resource "azure_private_dns_zone" "private_dns_zones" {
-
+resource "azurerm_private_dns_zone" "private_dns_zones" {
+    count                = length(var.environments)
+    name                 = format("%s-privatelink.valtcore.azure.net", var.environments[count.index])
+    resource_group_name  = azurerm_resource_group.main.name
+    registration_enabled = true
 }
 
-resource "azure_private_endpoint" "private_endpoints" {
+resource "azurerm_private_endpoint" "private_endpoints" {
 
 }
 
