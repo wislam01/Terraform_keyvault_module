@@ -14,7 +14,7 @@ variable "subscription_id" {
 }
 
 resource "azurerm_resource_group" "main" {
-    name = var.resource_group
+    name     = var.resource_group
     location = "East US"
 }
 
@@ -33,7 +33,17 @@ resource "azurerm_private_dns_zone" "private_dns_zones" {
 }
 
 resource "azurerm_private_endpoint" "private_endpoints" {
-
+    count = 
+    name = 
+    location = 
+    resource_group_name = 
+    subnet_id = 
+    private_service_connection {
+      name = 
+      is_manual_connection = 
+      private_connection_resource_id = 
+      subresource_names = 
+    }
 }
 
 output "keyvault_ids" {
