@@ -22,3 +22,13 @@ variable "vnet_subnet_id" {
   description = "ID of the subnet where the private endpoint will be created"
   type        = string
 }
+
+variable "vnet_name" {
+  description = "Name of the Azure Virtual Network"
+  type        = string
+}
+
+variable "subnet_name" {
+  description = "Name of the subnet within the Azure Virtual Network"
+  type        = string
+}
