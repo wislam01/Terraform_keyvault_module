@@ -3,5 +3,5 @@ output "keyvault_ids" {
 }
 
 output "private_endpoint_ids" {
-    value = azurerm_private_endpoint.private_endpoints[*].id
+    value = azurerm_private_endpoint.private_endpoints
 }
