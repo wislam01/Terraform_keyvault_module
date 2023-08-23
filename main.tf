@@ -12,9 +12,9 @@ terraform {
 }
 
 provider "azurerm" {
-    features {}
-    subscription_id = var.subscription_id
-    tenant_id       = var.tenant_id
+  features {}
+  subscription_id = var.subscription_id
+  tenant_id       = var.tenant_id
 }
 
 resource "azurerm_resource_group" "main" {
@@ -42,10 +42,10 @@ resource "random_integer" "vault_suffix" {
 }
 
 module "keyvaults" {
-    source               = "./key_vault_module"
-    environments         = var.environments
-    resource_group_name  = var.resource_group_name
-    vnet_subnet_id       = azurerm_subnet.subnet.id
-    tenant_id            = var.tenant_id
-    vault_suffix         = random_integer.vault_suffix.result
+  source              = "./key_vault_module"
+  environments        = var.environments
+  resource_group_name = var.resource_group_name
+  vnet_subnet_id      = azurerm_subnet.subnet.id
+  tenant_id           = var.tenant_id
+  vault_suffix        = random_integer.vault_suffix.result
 }
