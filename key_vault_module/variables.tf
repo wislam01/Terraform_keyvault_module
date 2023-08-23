@@ -3,17 +3,7 @@ variable "environments"{
     type        = list(string)
 }
 
-variable "resource_group_name" {
+variable "resource_group" {
     description = "Name of the resource group"
-    type        = string
-}
-
-variable "subscription_id" {
-    description = "ID of the Azure subscription"
-    type        = string
-}
-
-variable "tenant_id" {
-    description = "ID of the Azure AD tenant"
     type        = string
 }
