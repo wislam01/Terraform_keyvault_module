@@ -20,12 +20,12 @@ resource "azurerm_private_dns_zone" "private_dns_zones" {
 
 resource "azurerm_private_endpoint" "private_endpoints" {
     for_each                 = azurerm_key_vault.keyvaults
-    name                             = "${each.key}-keyvault-endpoint"
-    location                         = resource_group.main.location
-    resource_group              = azurerm_resource_group.main.name
-    subnet_id                        = var.vnet_subnet_id
+    name                     = "${each.key}-keyvault-endpoint"
+    location                 = resource_group.main.location
+    resource_group           = azurerm_resource_group.main.name
+    subnet_id                = var.vnet_subnet_id
     private_dns_zone_group {
-      name = "${each.key}-pdzg"
+      name                   = "${each.key}-pdzg"
       private_dns_zone_group = [azurerm_private_dns_zone.private_dns_zones[each.key].id]
     }
 
