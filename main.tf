@@ -7,6 +7,7 @@ provider "azurerm" {
 module "keyvaults" {
     source               = "./key_vault_module"
     environments         = var.environments
-    resource_group_name       = var.resource_group_name
+    resource_group_name  = var.resource_group_name
     vnet_subnet_id       = var.vnet_subnet_id
+    tenant_id       = var.tenant_id
 }
